@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Լուիզայի 20-ամյակի Հրավիրատոմս</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      color: #5a3d46;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    /* ՓԱԿ ԲԱՑԻԿԻ ՎԻՃԱԿ */
+    #card-cover {
+      background: #ffffff;
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(230, 180, 195, 0.5);
+      border: 2px solid #f8c8dc;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #card-cover:hover {
+      transform: scale(1.02);
+    }
+
+    .cover-title {
+      font-size: 24px;
+      color: #d87093;
+      margin-bottom: 15px;
+    }
+
+    .open-btn {
+      background-color: #f8c8dc;
+      color: #5a3d46;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    .open-btn:hover {
+      background-color: #f4b6c2;
+    }
+
+    /* ԲԱՑՎԱԾ ՀՐԱՎԻՐԱՏՈՄՍԻ ՎԻՃԱԿ */
+    #card-content {
+      display: none;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(230, 180, 195, 0.5);
+      border: 2px solid #f8c8dc;
+    }
+
+    /* Նկարի ոճ */
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #f8c8dc;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: #d87093;
+      margin-bottom: 5px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #8b5a6c;
+      margin-bottom: 20px;
+    }
+
+    .info-block {
+      background-color: #fff8fa;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px 0;
+      border: 1px solid #ffe4e1;
+    }
+
+    /* Google Maps Կոճակ */
+    .map-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 16px;
+      background-color: #e6b8c6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 15px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .map-btn:hover {
+      background-color: #d87093;
+    }
+
+    /* Հետհաշվարկի ժամացույց */
+    #timer {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .timer-box {
+      background: #f8c8dc;
+      color: #5a3d46;
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 55px;
+    }
+
+    .timer-box span {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .timer-box label {
+      font-size: 11px;
+    }
+
+    /* RSVP Կոճակ */
+    .rsvp-btn {
+      display: inline-block;
+      width: 80%;
+      padding: 12px 0;
+      background-color: #d87093;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 25px;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(216, 112, 147, 0.4);
+    }
+
+    .rsvp-btn:hover {
+      background-color: #c45c7d;
+    }
+
+    .audio-player {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- ՓԱԿ ԲԱՑԻԿ -->
+    <div id="card-cover" onclick="openCard()">
+      <div class="cover-title">✨ Հատուկ Հրավեր ✨</div>
+      <p>Սիրով հրավիրում եմ Ձեզ իմ ծննդյան տոնին</p>
+      <button class="open-btn">Սեղմել բացելու համար 💌</button>
+    </div>
+
+    <!-- ԲԱՑՎԱԾ ՀՐԱՎԻՐԱՏՈՄՍ -->
+    <div id="card-content">
+      
+      <!-- ԵՐԱԺՇՏՈՒԹՅՈՒՆ (Տեղադրել երգի անունը, օրինակ՝ music.mp3) -->
+      <div class="audio-player">
+        <audio id="bg-music" controls loop>
+          <source src="music.mp3" type="audio/mpeg">
+          Ձեր բրաուզերը չի աջակցում աուդիո նվագարկիչը։
+        </audio>
+      </div>
+
+      <!-- ՆԿԱՐ (Տեղադրել նկարի անունը, օրինակ՝ photo.jpg) -->
+      <img src="photo.jpg" alt="Լուիզա" class="profile-photo">
+
+      <h1>Լուիզա</h1>
+      <div class="subtitle">🎉 20-ամյակ 🎉</div>
+
+      <div class="info-block">
+        <p><strong>📅 Ամսաթիվ՝</strong> Մարտի 7</p>
+        <p><strong>⏰ Ժամը՝</strong> 17:00</p>
+      </div>
+
+      <div class="info-block">
+        <p><strong>📍 Վայրը՝</strong> «Այգի» ռեստորան</p>
+        <!-- Google Maps-ի հղում դեպի «Այգի» ռեստորան Երևանում -->
+        <a href="https://maps.google.com/?q=Aygi+Restaurant+Yerevan" target="_blank" class="map-btn">
+          📍 Գտնել Google Maps-ով
+        </a>
+      </div>
+
+      <!-- ՀԵՏՀԱՇՎԱՐԿԻ ԺԱՄԱՑՈՒՅՑ -->
+      <h3>Մինչև միջոցառումը մնաց՝</h3>
+      <div id="timer">
+        <div class="timer-box"><span id="days">00</span><label>Օր</label></div>
+        <div class="timer-box"><span id="hours">00</span><label>Ժամ</label></div>
+        <div class="timer-box"><span id="minutes">00</span><label>Րոպե</label></div>
+        <div class="timer-box"><span id="seconds">00</span><label>Վայրկյան</label></div>
+      </div>
+
+      <!-- RSVP ԿՈՃԱԿ (Միացված է 091232646 համարին) -->
+      <a href="https://wa.me/37491232646?text=Բարև,%20հաստատում%20եմ%20ներկայությունս%20Լուիզայի%20ծննդյանը" class="rsvp-btn" target="_blank">
+        Հաստատել Ներկայությունը (RSVP)
+      </a>
+
+    </div>
+
+  </div>
+
+  <script>
+    function openCard() {
+      document.getElementById('card-cover').style.display = 'none';
+      document.getElementById('card-content').style.display = 'block';
+      
+      var music = document.getElementById('bg-music');
+      if (music) {
+        music.play().catch(function(error) {
+          console.log("Ավտոմատ միացումը արգելափակվեց բրաուզերի կողմից:");
+        });
+      }
+    }
+
+    const targetDate = new Date("March 7, 2027 17:00:00").getTime();
+
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("timer").innerHTML = "Միջոցառումը սկսվել է:";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }, 1000);
+  </script>
+
+</body>
+</html>
